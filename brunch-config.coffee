@@ -17,7 +17,7 @@ exports.config =
         autoReload:
             enabled:
                 js: on
-                scss: on
+                css: on
                 assets: on
         sass:
           options:
