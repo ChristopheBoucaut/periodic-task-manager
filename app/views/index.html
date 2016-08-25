@@ -14,14 +14,10 @@
             <md-sidenav ng-if="isHome" md-component-id="left" class="md-sidenav-left">
                 <md-list>
                     <md-list-item class="md-1-line">
-                        <md-button aria="Add ship" class="md-primary md-raised" href="#/ship">
-                            {{ "homepage.add_new_ship"|translate }}
-                        </md-button>
-                    </md-list-item>
-                    <md-list-item class="md-1-line">
-                        <md-button aria="About it" class="md-primary md-raised" href="#/aboutit">
-                            {{ 'header.navigation.aboutit'|translate }}
-                        </md-button>
+                        <md-input-container ng-if="isHome" class="md-block md-icon-left">
+                            <md-icon md-svg-icon="global:search" aria-label="Search"></md-icon>
+                            <input class="ng-warn" ng-model="$root.search" type="text" placeholder="{{ 'header.input.search'|translate }}">
+                        </md-input-container>
                     </md-list-item>
                 </md-list>
             </md-sidenav>

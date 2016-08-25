@@ -1,5 +1,10 @@
 {
     "head": {
-        "base-title": "Periodic Task Manager"
+        "base-title": "Gestionnaire de tâche périodiques"
+    },
+    "header": {
+        "input": {
+            "search": "Recherchez une tâche"
+        }
     }
 }

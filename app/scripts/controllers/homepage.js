@@ -1,8 +1,11 @@
 class Homepage {
-    constructor() {
+    constructor(headerContent) {
+        headerContent.setMainAction(function () {
+            console.log('ee');
+        }, 'global:create');
     }
 }
 
-Homepage.$inject = [];
+Homepage.$inject = ['headerContent'];
 
 export default Homepage;

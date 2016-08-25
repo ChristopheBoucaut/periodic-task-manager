@@ -60,7 +60,7 @@ mainModule.config([
 
 mainModule.config(['$mdThemingProvider',function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-        .primaryPalette('indigo')
+        .primaryPalette('blue')
         .accentPalette('red')
         .warnPalette('brown')
         .dark();
@@ -70,6 +70,8 @@ mainModule.config(['$mdIconProvider', function ($mdIconProvider) {
     var defaultPathIcons = 'img/icons/';
     $mdIconProvider
         .icon('global:menu', defaultPathIcons+'menu.svg')
+        .icon('global:search', defaultPathIcons+'search.svg')
+        .icon('global:create', defaultPathIcons+'create.svg')
         .icon('global:back', defaultPathIcons+'back.svg');
 }]);
 
