@@ -6,5 +6,28 @@
         "input": {
             "search": "Recherchez une tâche"
         }
+    },
+    "create": {
+        "title": "Créer une tâche",
+        "title_update": "Modifier une tâche",
+        "task": {
+            "name": {
+                "label": "Renseigner l'intitulé de votre tâche",
+                "error": {
+                    "required": "Il est nécessaire de renseigner un intitulé pour créer votre tâche."
+                }
+            },
+            "periodicity": {
+                "label": "Renseigner la périodicité de votre tâche en jours",
+                "error": {
+                    "required": "Il est nécessaire de renseigner un nombre de jours pour la périodicité.",
+                    "min": "Il est nécessaire de renseigner un nombre de jours valide."
+                }
+            },
+            "nextDate": {
+                "label": "Renseigner une éventuelle date pour débuter la tâche"
+            },
+            "save": "Enregistrer"
+        }
     }
 }

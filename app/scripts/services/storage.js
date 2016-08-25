@@ -91,6 +91,4 @@ class StorageProvider {
     }
 }
 
-StorageProvider.$inject = [];
-
 export default StorageProvider;

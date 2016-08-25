@@ -7,6 +7,7 @@ var nameModule = 'periodicTaskManager';
 var mainModule = angular.module(nameModule, [
     controllersModule,
     servicesModule,
+    'ngMessages',
     'ngRoute',
     'ngMaterial',
     'pascalprecht.translate',
@@ -22,6 +23,13 @@ mainModule.config([
                 {
                     controller: 'HomepageController',
                     templateUrl: 'homepage.html'
+                }
+            )
+            .when(
+                '/create/:id?',
+                {
+                    controller: 'CreateController',
+                    templateUrl: 'create.html'
                 }
             )
             .otherwise({ redirectTo: '/' });
@@ -63,7 +71,7 @@ mainModule.config(['$mdThemingProvider',function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
         .primaryPalette('blue')
         .accentPalette('red')
-        .warnPalette('brown')
+        .warnPalette('deep-orange')
         .dark();
 }]);
 
@@ -74,6 +82,14 @@ mainModule.config(['$mdIconProvider', function ($mdIconProvider) {
         .icon('global:search', defaultPathIcons+'search.svg')
         .icon('global:create', defaultPathIcons+'create.svg')
         .icon('global:back', defaultPathIcons+'back.svg');
+}]);
+
+mainModule.config(['$mdDateLocaleProvider', function($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.formatDate = function(date) {
+        date = new Date(date);
+
+        return date.toLocaleDateString();
+    };
 }]);
 
 mainModule.config(['storageProvider', function (storageProvider) {

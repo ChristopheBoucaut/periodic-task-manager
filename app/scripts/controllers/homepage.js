@@ -1,11 +1,13 @@
+import Task from 'scripts/entity/task';
+
 class Homepage {
-    constructor(headerContent) {
+    constructor($location, headerContent) {
         headerContent.setMainAction(function () {
-            console.log('ee');
+            $location.path('/create');
         }, 'global:create');
     }
 }
 
-Homepage.$inject = ['headerContent'];
+Homepage.$inject = ['$location', 'headerContent'];
 
 export default Homepage;

@@ -1,0 +1,10 @@
+#create-task {
+    .md-datepicker-input-container {
+        width: calc(100% - 70px);
+
+        input {
+            width: 100%;
+            max-width: none;
+        }
+    }
+}
