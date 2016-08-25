@@ -1,5 +1,6 @@
 import controllersModule from 'scripts/controllers';
 import servicesModule from 'scripts/services';
+import Task from 'scripts/entity/task';
 
 var nameModule = 'periodicTaskManager';
 
@@ -73,6 +74,12 @@ mainModule.config(['$mdIconProvider', function ($mdIconProvider) {
         .icon('global:search', defaultPathIcons+'search.svg')
         .icon('global:create', defaultPathIcons+'create.svg')
         .icon('global:back', defaultPathIcons+'back.svg');
+}]);
+
+mainModule.config(['storageProvider', function (storageProvider) {
+    storageProvider.addEntity(Task, function (name, db) {
+        var objectStore = db.createObjectStore(name, { keyPath: 'id', autoIncrement: true });
+    });
 }]);
 
 export default nameModule;
