@@ -5,7 +5,7 @@
     "Christophe Boucaut <boucaut.christophe@gmail.com>"
   ],
   "description": "A manager for periodics tasks.",
-  "main": "index.html",
+  "main": "public/index.html",
   "keywords": [
     "periodic",
     "task",

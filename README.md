@@ -10,5 +10,5 @@ To manage periodics tasks. More informations soon.
 
 # Start server
 
-* brunch watch --server
+* npm start
 
