@@ -8,7 +8,26 @@ class Storage {
         this[entitiesSymbol] = entities;
     }
 
+    getObjectStore(entity, mode) {
+        var deferred = this.$q.defer();
+        this.getConnexion().then(function (connexion) {
+            var stockageName = getStockageNameFromEntity(entity);
+            var transaction = connexion.transaction(stockageName, mode);
+
+            transaction.onerror = function(event) {
+                console.error('Transaction failed.');
+                deferred.reject(event);
+            };
+
+            var objectStore = transaction.objectStore(stockageName);
+            deferred.resolve(objectStore);
+        });
+
+        return deferred.promise;
+    }
+
     getConnexion() {
+        var that = this;
         var deferred = this.$q.defer();
 
         if (this[connexionSymbol] !== null) {
@@ -41,10 +60,8 @@ class Storage {
                 var db = event.target.result;
 
                 // Config DB
-                for (var name in this[entitiesSymbol]) {
-                    if (this[entitiesSymbol].hasOwnProperty(name)) {
-                        this[entitiesSymbol][name](name.toLowerCase(), db);
-                    }
+                for (var i = 0; i < that[entitiesSymbol].length; i++) {
+                    that[entitiesSymbol][i].initDb(getStockageNameFromEntity(that[entitiesSymbol][i].entity), db);
                 }
             };
         }
@@ -53,9 +70,13 @@ class Storage {
     }
 }
 
+function getStockageNameFromEntity(entity) {
+    return entity.name.toLowerCase();
+}
+
 class StorageProvider {
     constructor() {
-        this.entities = {};
+        this.entities = [];
 
         this.$get = [
             '$q',
@@ -66,7 +87,7 @@ class StorageProvider {
     }
 
     addEntity(entity, initDb) {
-        this.entities[entity.name] = initDb;
+        this.entities.push({entity: entity, initDb: initDb});
     }
 }
 
