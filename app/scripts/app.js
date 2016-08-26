@@ -81,6 +81,9 @@ mainModule.config(['$mdIconProvider', function ($mdIconProvider) {
         .icon('global:menu', defaultPathIcons+'menu.svg')
         .icon('global:search', defaultPathIcons+'search.svg')
         .icon('global:create', defaultPathIcons+'create.svg')
+        .icon('global:check', defaultPathIcons+'check.svg')
+        .icon('global:next', defaultPathIcons+'next.svg')
+        .icon('global:delete', defaultPathIcons+'delete.svg')
         .icon('global:back', defaultPathIcons+'back.svg');
 }]);
 

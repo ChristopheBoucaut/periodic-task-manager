@@ -1,10 +1,29 @@
 {
     "head": {
-        "base-title": "Gestionnaire de tâche périodiques"
+        "base_title": "Gestionnaire de tâche périodiques"
     },
     "header": {
         "input": {
             "search": "Recherchez une tâche"
+        }
+    },
+    "homepage": {
+        "task": {
+            "action": {
+                "check": "Valider",
+                "report": "Reporter",
+                "edit": "Modifier",
+                "delete": "Supprimer"
+            },
+            "date": {
+                "today": "Aujourd'hui",
+                "late": "En retard de {{ days }} jours",
+                "next": "Dans {{ days }} jours"
+            }
+        },
+        "errors": {
+            "loading_tasks": "Echec du chargement des tâches",
+            "no_tasks": "Vous n'avez aucune tâches"
         }
     },
     "create": {

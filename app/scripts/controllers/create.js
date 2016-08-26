@@ -1,7 +1,7 @@
 import Task from 'scripts/entity/task';
 
 class Create {
-    constructor($scope, $routeParams, $translate, headContent, storage, taskManager) {
+    constructor($scope, $routeParams, $translate, headContent, taskManager) {
         $scope.saveTask = function () {
             if ($scope.taskForm.$valid) {
                 if (!$scope.task.nextDate) {
@@ -41,6 +41,6 @@ class Create {
     }
 }
 
-Create.$inject = ['$scope', '$routeParams', '$translate', 'headContent', 'storage', 'taskManager'];
+Create.$inject = ['$scope', '$routeParams', '$translate', 'headContent', 'taskManager'];
 
 export default Create;

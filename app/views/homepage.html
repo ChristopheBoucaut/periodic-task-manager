@@ -1,1 +1,56 @@
-{{ $root.search }}
+<md-progress-linear ng-if="loadingTasks" class="md-accent" md-mode="indeterminate"></md-progress-linear>
+<md-toolbar ng-if="errorLoadingTasks" class="md-accent">
+    <div class="md-toolbar-tools">
+        <h2 class="md-flex">{{ 'homepage.errors.loading_tasks'|translate }}</h2>
+    </div>
+</md-toolbar>
+
+<div ng-if="tasks.length == 0 && !errorLoadingTasks && !loadingTasks">
+    <br>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">{{ 'homepage.errors.no_tasks'|translate }}</h2>
+        </div>
+    </md-toolbar>
+</div>
+
+<div id="tasks" ng-if="tasks.length > 0" layout="row" layout-wrap>
+    <div ng-repeat="task in tasks | filter:$root.name | orderBy:'daysBeforeNextTime'" flex="33" flex-md="50" flex-xs="100" flex-sm="100">
+        <md-card ng-class="{today: task.daysBeforeNextTime === 0, next: task.daysBeforeNextTime > 0, late: task.daysBeforeNextTime < 0}">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{ task.name }}</span>
+                    <span class="md-subhead">
+                        <span ng-if="task.daysBeforeNextTime === 0">
+                            {{ 'homepage.task.date.today'|translate }}
+                        </span>
+                        <span ng-if="task.daysBeforeNextTime > 0">
+                            {{ 'homepage.task.date.next'|translate:{days: task.daysBeforeNextTime} }}
+                        </span>
+                        <span ng-if="task.daysBeforeNextTime < 0">
+                            {{ 'homepage.task.date.late'|translate:{days: task.daysBeforeNextTime} }}
+                        </span>
+                    </span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button>
+                    <md-icon md-svg-icon="global:check" aria-label="Check"></md-icon>
+                    <span>{{ 'homepage.task.action.check'|translate }}</span>
+                </md-button>
+                <md-button>
+                    <md-icon md-svg-icon="global:next" aria-label="Next"></md-icon>
+                    <span>{{ 'homepage.task.action.report'|translate }}</span>
+                </md-button>
+                <md-button>
+                    <md-icon md-svg-icon="global:create" aria-label="Edit"></md-icon>
+                    <span>{{ 'homepage.task.action.edit'|translate }}</span>
+                </md-button>
+                <md-button>
+                    <md-icon md-svg-icon="global:delete" aria-label="Delete"></md-icon>
+                    <span>{{ 'homepage.task.action.delete'|translate }}</span>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>

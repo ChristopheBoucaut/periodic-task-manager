@@ -2,8 +2,8 @@
 <html ng-app="periodicTaskManager">
     <head ng-controller="HeadController">
         <meta charset="utf-8">
-        <title ng-if="additionnalTitle">{{ additionnalTitle }} - {{ 'head.base-title'|translate }}</title>
-        <title ng-if="!additionnalTitle">{{ 'head.base-title'|translate }}</title>
+        <title ng-if="additionnalTitle">{{ additionnalTitle }} - {{ 'head.base_title'|translate }}</title>
+        <title ng-if="!additionnalTitle">{{ 'head.base_title'|translate }}</title>
         <link rel="stylesheet" href="css/vendor.css">
         <link rel="stylesheet" href="css/app.css">
         <script type="text/javascript" src="js/vendor.js"></script>
@@ -16,7 +16,7 @@
                     <md-list-item class="md-1-line">
                         <md-input-container ng-if="isHome" class="md-block md-icon-left">
                             <md-icon md-svg-icon="global:search" aria-label="Search"></md-icon>
-                            <input class="ng-warn" ng-model="$root.search" type="text" placeholder="{{ 'header.input.search'|translate }}">
+                            <input class="ng-warn" ng-model="$root.name" type="text" placeholder="{{ 'header.input.search'|translate }}">
                         </md-input-container>
                     </md-list-item>
                 </md-list>
@@ -31,7 +31,7 @@
                     </md-button>
                     <h2>
                         <span ng-if="title">{{ title }}</span>
-                        <span ng-if="!title">{{ 'header.title.home'|translate }}</span>
+                        <span ng-if="!title">{{ 'head.base_title'|translate }}</span>
                     </h2>
                     <span flex></span>
                     <md-button class="md-icon-button" aria-label="main-action" ng-if="mainAction" ng-click="mainAction.callback()">

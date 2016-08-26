@@ -44,31 +44,35 @@ class TaskManager {
             };
         }, function () {
             console.error('Fail to open transaction.');
+            deferred.reject();
+        });
+
+        return deferred.promise;
+    }
+
+    getAll() {
+        var deferred = this.$q.defer();
+
+        var taskStore = this.storage.getObjectStore(Task, 'readonly');
+        taskStore.then(function (objectStore) {
+            var tasks = [];
+            objectStore.openCursor().onsuccess = function(event) {
+                var cursor = event.target.result;
+                if (cursor) {
+                    tasks.push(cursor.value);
+                    cursor.continue();
+                } else {
+                    deferred.resolve(tasks);
+                }
+            };
+        }, function () {
+            console.error('Fail to open transaction.');
+            deferred.reject();
         });
 
         return deferred.promise;
     }
 }
-
-// var taskStore = storage.getObjectStore(Task, 'readwrite');
-// taskStore.then(function (objectStore) {
-//     var t = new Task("Ma tache");
-//     var addRequest = objectStore.add(t);
-//     addRequest.onsuccess = function () {console.log('onsuccess add request');};
-//     addRequest.onerror = function () {console.log('onerror add request');};
-//
-//     var tasks = [];
-//     objectStore.openCursor().onsuccess = function(event) {
-//         var cursor = event.target.result;
-//         if (cursor) {
-//             tasks.push(cursor.value);
-//             cursor.continue();
-//         } else {
-//             console.log("Got all tasks: ");
-//             console.log(tasks);
-//         }
-//     };
-// });
 
 
 TaskManager.$inject = ['$q', 'storage'];

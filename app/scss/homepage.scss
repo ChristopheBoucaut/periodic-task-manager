@@ -1,0 +1,23 @@
+#tasks {
+    .today {
+        background-color: #E64A19;
+    }
+
+    .next {
+        background-color: #1976D2;
+    }
+
+    .late {
+        background-color: #D32F2F;
+    }
+
+    @media screen and (max-width: 480px) {
+        md-card-actions {
+            button {
+                span {
+                    display: none;
+                }
+            }
+        }
+    }
+}
