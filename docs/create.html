@@ -1,0 +1,27 @@
+<form id="create-task" name="taskForm" layout-margin ng-submit="saveTask()">
+    <md-input-container class="md-block">
+        <label>{{ 'create.task.name.label'|translate }}</label>
+        <input type="text" name="name" ng-model="task.name" required>
+        <div ng-messages="taskForm.name.$error">
+            <div ng-message="required">{{ 'create.task.name.error.required'|translate }}</div>
+        </div>
+    </md-input-container>
+    <div layout="column" layout-gt-md="row">
+        <md-input-container flex="50">
+            <label>{{ 'create.task.periodicity.label'|translate }}</label>
+            <input type="number" name="periodicity" ng-model="task.periodicity" min="1" required>
+            <div ng-messages="taskForm.periodicity.$error">
+                <div ng-message="required">{{ 'create.task.periodicity.error.required'|translate }}</div>
+                <div ng-message="min">{{ 'create.task.periodicity.error.min'|translate }}</div>
+            </div>
+        </md-input-container>
+        <md-input-container flex="50">
+            <label>{{ 'create.task.nextDate.label'|translate }}</label>
+            <md-datepicker ng-model="task.nextDate" md-min-date="minDate"></md-datepicker>
+        </md-input-container>
+    </div>
+
+    <div>
+        <md-button class="md-raised md-primary" type="submit">{{ 'create.task.save'|translate }}</md-button>
+    </div>
+</form>

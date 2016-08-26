@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="periodicTaskManager">
+    <head ng-controller="HeadController">
+        <meta charset="utf-8">
+        <title ng-if="additionnalTitle">{{ additionnalTitle }} - {{ 'head.base_title'|translate }}</title>
+        <title ng-if="!additionnalTitle">{{ 'head.base_title'|translate }}</title>
+        <link rel="stylesheet" href="css/vendor.css">
+        <link rel="stylesheet" href="css/app.css">
+        <script type="text/javascript" src="js/vendor.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+    </head>
+    <body>
+        <header ng-controller="HeaderController">
+            <md-sidenav ng-if="isHome" md-component-id="left" class="md-sidenav-left">
+                <md-list>
+                    <md-list-item class="md-1-line">
+                        <md-input-container ng-if="isHome" class="md-block md-icon-left">
+                            <md-icon md-svg-icon="global:search" aria-label="Search"></md-icon>
+                            <input class="ng-warn" ng-model="$root.name" type="text" placeholder="{{ 'header.input.search'|translate }}">
+                        </md-input-container>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item class="md-1-line">
+                        <md-button href="#/history" class="md-raised md-primary">{{ "header.go.history"|translate }}</md-button>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                </md-list>
+            </md-sidenav>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <md-button ng-if="isHome" class="md-icon-button" aria-label="Menu" ng-click="openLeftMenu()">
+                        <md-icon md-svg-icon="global:menu" aria-label="Menu"></md-icon>
+                    </md-button>
+                    <md-button ng-if="!isHome" class="md-icon-button" aria-label="Back" ng-click="backHome()">
+                        <md-icon md-svg-icon="global:back" aria-label="Back"></md-icon>
+                    </md-button>
+                    <h2>
+                        <span ng-if="title">{{ title }}</span>
+                        <span ng-if="!title">{{ 'head.base_title'|translate }}</span>
+                    </h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" aria-label="main-action" ng-if="mainAction" ng-click="mainAction.callback()">
+                        <md-icon md-svg-icon="{{ mainAction.icon }}"></md-icon>
+                    </md-button>
+                  </div>
+            </md-toolbar>
+        </header>
+        <main>
+            <md-content ng-view>
+            </md-content>
+        </main>
+        <script>
+            (function () {
+                require('scripts/app');
+            }());
+        </script>
+    </body>
+</html>

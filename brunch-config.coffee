@@ -22,3 +22,5 @@ exports.config =
         sass:
           options:
             includePaths: ['app/scss']
+    paths:
+        public: 'docs'
