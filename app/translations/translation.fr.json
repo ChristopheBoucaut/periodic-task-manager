@@ -19,6 +19,14 @@
                 "today": "Aujourd'hui",
                 "late": "En retard de {{ days }} jours",
                 "next": "Dans {{ days }} jours"
+            },
+            "delete": {
+                "dialog": {
+                    "title": "Confirmer la suppression de la tâche",
+                    "description": "Vous allez supprimer la tâche \"{{ name }}\". Cette action sera irréversible. Continuer ?",
+                    "confirm": "Supprimer",
+                    "cancel": "Annuler"
+                }
             }
         },
         "errors": {

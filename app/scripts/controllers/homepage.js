@@ -1,7 +1,7 @@
 import Task from 'scripts/entity/task';
 
 class Homepage {
-    constructor($scope, $location, headContent, headerContent, taskManager) {
+    constructor($scope, $location, $mdDialog, $translate, headContent, headerContent, taskManager) {
         var that = this;
         this.taskManager = taskManager;
         $scope.loadingTasks = true;
@@ -41,9 +41,21 @@ class Homepage {
 
         $scope.delete = function ($index) {
             var task = $scope.tasks[$index];
-            taskManager.delete(task.id).then(function () {
-                $scope.tasks.splice($index, 1);
+
+            $translate(['homepage.task.delete.dialog.title', 'homepage.task.delete.dialog.description', 'homepage.task.delete.dialog.confirm', 'homepage.task.delete.dialog.cancel'], {name: task.name}).then(function (texts) {
+                console.log(texts);
+                var confirm = $mdDialog.confirm()
+                    .title(texts['homepage.task.delete.dialog.title'])
+                    .textContent(texts['homepage.task.delete.dialog.description'])
+                    .ok(texts['homepage.task.delete.dialog.confirm'])
+                    .cancel(texts['homepage.task.delete.dialog.cancel']);
+                $mdDialog.show(confirm).then(function() {
+                    taskManager.delete(task.id).then(function () {
+                        $scope.tasks.splice($index, 1);
+                    });
+                });
             });
+
         };
     }
 
@@ -62,6 +74,6 @@ class Homepage {
     }
 }
 
-Homepage.$inject = ['$scope', '$location', 'headContent', 'headerContent', 'taskManager'];
+Homepage.$inject = ['$scope', '$location', '$mdDialog', '$translate', 'headContent', 'headerContent', 'taskManager'];
 
 export default Homepage;
