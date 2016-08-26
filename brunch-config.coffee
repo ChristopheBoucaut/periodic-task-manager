@@ -24,3 +24,11 @@ exports.config =
             includePaths: ['app/scss']
     paths:
         public: 'docs'
+    overrides:
+        production:
+            # Not use minify because we use the class name to create objectStore.
+            optimize: false
+            sourceMaps: true
+            plugins:
+                autoReload:
+                    enabled: false
