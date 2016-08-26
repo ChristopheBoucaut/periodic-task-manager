@@ -238,11 +238,9 @@ mainModule.config(['$mdDateLocaleProvider', function ($mdDateLocaleProvider) {
 
 mainModule.config(['storageProvider', function (storageProvider) {
     storageProvider.addEntity(_task2.default, function (name, db) {
-        console.log('Create entity for :' + name);
         var objectStore = db.createObjectStore(name, { keyPath: 'id', autoIncrement: true });
     });
     storageProvider.addEntity(_taskHistory2.default, function (name, db) {
-        console.log('Create entity for :' + name);
         var objectStore = db.createObjectStore(name, { keyPath: 'id', autoIncrement: true });
     });
 }]);
