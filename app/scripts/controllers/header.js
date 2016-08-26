@@ -15,7 +15,7 @@ class Header {
         };
 
         $scope.backHome = function() {
-            $location.path('/');
+            window.history.back();
         };
 
         $scope.$on('$routeChangeSuccess', function () {

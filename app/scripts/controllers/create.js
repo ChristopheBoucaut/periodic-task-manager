@@ -1,7 +1,9 @@
 import Task from 'scripts/entity/task';
 
 class Create {
-    constructor($scope, $routeParams, $translate, headContent, taskManager) {
+    constructor($scope, $routeParams, $translate, $mdToast, headContent, headerContent, taskManager) {
+        headerContent.removeMainAction();
+
         $scope.saveTask = function () {
             if ($scope.taskForm.$valid) {
                 if (!$scope.task.nextDate) {
@@ -12,6 +14,11 @@ class Create {
 
                 taskManager.save($scope.task).then(function (idTask) {
                     console.log('success save. Id : '+idTask);
+                    $translate('create.task.saved').then(function (content) {
+                        var toast = $mdToast.simple().textContent(content);
+                        toast.position('top right');
+                        $mdToast.show(toast);
+                    });
                     window.history.back();
                 });
             }
@@ -41,6 +48,6 @@ class Create {
     }
 }
 
-Create.$inject = ['$scope', '$routeParams', '$translate', 'headContent', 'taskManager'];
+Create.$inject = ['$scope', '$routeParams', '$translate', '$mdToast', 'headContent', 'headerContent', 'taskManager'];
 
 export default Create;

@@ -46,7 +46,8 @@
             "nextDate": {
                 "label": "Renseigner une éventuelle date pour débuter la tâche"
             },
-            "save": "Enregistrer"
+            "save": "Enregistrer",
+            "saved": "Tâche enregistrée"
         }
     }
 }
