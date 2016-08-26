@@ -28,7 +28,7 @@ md-sidenav .md-button {
 
 @media screen and (max-width: 480px) {
   /* line 17, /home/shimrra/projects/periodic-task-manager/app/scss/homepage.scss */
-  #tasks md-card-actions button span {
+  #tasks md-card-actions .md-button span {
     display: none; } }
 
 
