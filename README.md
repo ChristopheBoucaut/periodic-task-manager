@@ -12,3 +12,6 @@ To manage periodics tasks. More informations soon.
 
 * npm start
 
+# Build for prod
+
+* brunch build --production
