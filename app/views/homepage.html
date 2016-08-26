@@ -15,7 +15,7 @@
 </div>
 
 <div id="tasks" ng-if="tasks.length > 0" layout="row" layout-wrap>
-    <div ng-repeat="task in tasks | filter:$root.name | orderBy:'daysBeforeNextTime'" flex="33" flex-md="50" flex-xs="100" flex-sm="100">
+    <div ng-repeat="task in tasks | filter:$root.name | orderBy:'daysBeforeNextTime' track by $index" flex="33" flex-md="50" flex-xs="100" flex-sm="100">
         <md-card ng-class="{today: task.daysBeforeNextTime === 0, next: task.daysBeforeNextTime > 0, late: task.daysBeforeNextTime < 0}">
             <md-card-title>
                 <md-card-title-text>
@@ -34,19 +34,19 @@
                 </md-card-title-text>
             </md-card-title>
             <md-card-actions layout="row" layout-align="end center">
-                <md-button>
+                <md-button ng-click="check(task)">
                     <md-icon md-svg-icon="global:check" aria-label="Check"></md-icon>
                     <span>{{ 'homepage.task.action.check'|translate }}</span>
                 </md-button>
-                <md-button>
+                <md-button ng-click="report(task)">
                     <md-icon md-svg-icon="global:next" aria-label="Next"></md-icon>
                     <span>{{ 'homepage.task.action.report'|translate }}</span>
                 </md-button>
-                <md-button>
+                <md-button href="#/create/{{ task.id }}">
                     <md-icon md-svg-icon="global:create" aria-label="Edit"></md-icon>
                     <span>{{ 'homepage.task.action.edit'|translate }}</span>
                 </md-button>
-                <md-button>
+                <md-button ng-click="delete($index)">
                     <md-icon md-svg-icon="global:delete" aria-label="Delete"></md-icon>
                     <span>{{ 'homepage.task.action.delete'|translate }}</span>
                 </md-button>

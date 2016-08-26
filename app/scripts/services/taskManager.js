@@ -72,6 +72,27 @@ class TaskManager {
 
         return deferred.promise;
     }
+
+    delete(id) {
+        var deferred = this.$q.defer();
+
+        var taskStore = this.storage.getObjectStore(Task, 'readwrite');
+        taskStore.then(function (objectStore) {
+            var deleteRequest = objectStore.delete(id);
+            deleteRequest.onsuccess = function () {
+                deferred.resolve(deleteRequest.result);
+            };
+            deleteRequest.onerror = function (event) {
+                deferred.reject(event);
+                console.error('Error to delete the task: '+id);
+            };
+        }, function () {
+            console.error('Fail to open transaction.');
+            deferred.reject();
+        });
+
+        return deferred.promise;
+    }
 }
 
 
