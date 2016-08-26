@@ -44,7 +44,6 @@ class Homepage {
             var task = $scope.tasks[$index];
 
             $translate(['homepage.task.delete.dialog.title', 'homepage.task.delete.dialog.description', 'homepage.task.delete.dialog.confirm', 'homepage.task.delete.dialog.cancel'], {name: task.name}).then(function (texts) {
-                console.log(texts);
                 var confirm = $mdDialog.confirm()
                     .title(texts['homepage.task.delete.dialog.title'])
                     .textContent(texts['homepage.task.delete.dialog.description'])
