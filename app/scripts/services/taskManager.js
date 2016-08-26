@@ -1,4 +1,5 @@
 import Task from 'scripts/entity/task';
+import TaskHistory from 'scripts/entity/taskHistory';
 
 var notifyChangeMainActionMethod = Symbol('notifyChangeMainAction');
 
@@ -85,6 +86,52 @@ class TaskManager {
             deleteRequest.onerror = function (event) {
                 deferred.reject(event);
                 console.error('Error to delete the task: '+id);
+            };
+        }, function () {
+            console.error('Fail to open transaction.');
+            deferred.reject();
+        });
+
+        return deferred.promise;
+    }
+
+    addHistory(task) {
+        var deferred = this.$q.defer();
+
+        var taskHistory = new TaskHistory(task.name);
+
+        var taskHistoryStore = this.storage.getObjectStore(TaskHistory, 'readwrite');
+        taskHistoryStore.then(function (objectStore) {
+            var addRequest = objectStore.add(taskHistory);
+            addRequest.onsuccess = function () {
+                deferred.resolve(addRequest.result);
+            };
+            addRequest.onerror = function (event) {
+                deferred.reject(event);
+                console.error('Error to add the task history');
+            };
+        }, function () {
+            console.error('Fail to open transaction.');
+            deferred.reject();
+        });
+
+        return deferred.promise;
+    }
+
+    getAllHistory() {
+        var deferred = this.$q.defer();
+
+        var taskHistoryStore = this.storage.getObjectStore(TaskHistory, 'readonly');
+        taskHistoryStore.then(function (objectStore) {
+            var tasksHistory = [];
+            objectStore.openCursor().onsuccess = function(event) {
+                var cursor = event.target.result;
+                if (cursor) {
+                    tasksHistory.push(cursor.value);
+                    cursor.continue();
+                } else {
+                    deferred.resolve(tasksHistory);
+                }
             };
         }, function () {
             console.error('Fail to open transaction.');

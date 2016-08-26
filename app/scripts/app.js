@@ -1,6 +1,7 @@
 import controllersModule from 'scripts/controllers';
 import servicesModule from 'scripts/services';
 import Task from 'scripts/entity/task';
+import TaskHistory from 'scripts/entity/taskHistory';
 
 var nameModule = 'periodicTaskManager';
 
@@ -30,6 +31,13 @@ mainModule.config([
                 {
                     controller: 'CreateController',
                     templateUrl: 'create.html'
+                }
+            )
+            .when(
+                '/history',
+                {
+                    controller: 'HistoryController',
+                    templateUrl: 'history.html'
                 }
             )
             .otherwise({ redirectTo: '/' });
@@ -97,6 +105,9 @@ mainModule.config(['$mdDateLocaleProvider', function($mdDateLocaleProvider) {
 
 mainModule.config(['storageProvider', function (storageProvider) {
     storageProvider.addEntity(Task, function (name, db) {
+        var objectStore = db.createObjectStore(name, { keyPath: 'id', autoIncrement: true });
+    });
+    storageProvider.addEntity(TaskHistory, function (name, db) {
         var objectStore = db.createObjectStore(name, { keyPath: 'id', autoIncrement: true });
     });
 }]);

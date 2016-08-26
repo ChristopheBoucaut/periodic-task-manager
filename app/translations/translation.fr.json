@@ -5,6 +5,9 @@
     "header": {
         "input": {
             "search": "Recherchez une tâche"
+        },
+        "go": {
+            "history": "Historique"
         }
     },
     "homepage": {
@@ -56,6 +59,14 @@
             },
             "save": "Enregistrer",
             "saved": "Tâche enregistrée"
+        }
+    },
+    "history": {
+        "title": "Historique des tâches effectuées",
+        "date": "Terminée le {{ date }}",
+        "errors": {
+            "no_tasks_history": "Aucun historique trouvé",
+            "loading_tasks_history": "Echec du chargement de l'historique"
         }
     }
 }

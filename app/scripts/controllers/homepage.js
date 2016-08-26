@@ -33,6 +33,7 @@ class Homepage {
         $scope.check = function (task) {
             that.validTask(task);
             // Save in history.
+            taskManager.addHistory(task);
         };
 
         $scope.report = function (task) {
