@@ -1,33 +1,33 @@
-/* line 2, /home/cboucaut/projets/personnal/periodic-task-manager/app/scss/create.scss */
+/* line 2, /home/shimrra/projects/periodic-task-manager/app/scss/create.scss */
 #create-task .md-datepicker-input-container {
   width: calc(100% - 70px); }
-  /* line 5, /home/cboucaut/projets/personnal/periodic-task-manager/app/scss/create.scss */
+  /* line 5, /home/shimrra/projects/periodic-task-manager/app/scss/create.scss */
   #create-task .md-datepicker-input-container input {
     width: 100%;
     max-width: none; }
 
-/* line 2, /home/cboucaut/projets/personnal/periodic-task-manager/app/scss/global.scss */
+/* line 2, /home/shimrra/projects/periodic-task-manager/app/scss/global.scss */
 md-sidenav md-input-container {
   margin-bottom: 0; }
 
-/* line 6, /home/cboucaut/projets/personnal/periodic-task-manager/app/scss/global.scss */
+/* line 6, /home/shimrra/projects/periodic-task-manager/app/scss/global.scss */
 md-sidenav .md-button {
   width: 100%; }
 
-/* line 2, /home/cboucaut/projets/personnal/periodic-task-manager/app/scss/homepage.scss */
+/* line 2, /home/shimrra/projects/periodic-task-manager/app/scss/homepage.scss */
 #tasks .today {
   background-color: #E64A19; }
 
-/* line 6, /home/cboucaut/projets/personnal/periodic-task-manager/app/scss/homepage.scss */
+/* line 6, /home/shimrra/projects/periodic-task-manager/app/scss/homepage.scss */
 #tasks .next {
   background-color: #1976D2; }
 
-/* line 10, /home/cboucaut/projets/personnal/periodic-task-manager/app/scss/homepage.scss */
+/* line 10, /home/shimrra/projects/periodic-task-manager/app/scss/homepage.scss */
 #tasks .late {
   background-color: #D32F2F; }
 
 @media screen and (max-width: 480px) {
-  /* line 17, /home/cboucaut/projets/personnal/periodic-task-manager/app/scss/homepage.scss */
+  /* line 17, /home/shimrra/projects/periodic-task-manager/app/scss/homepage.scss */
   #tasks md-card-actions .md-button span {
     display: none; } }
 

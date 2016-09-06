@@ -1,23 +1,23 @@
-var cacheName = 'periodic-task-manager-cache-files-4';
+var cacheName = 'periodic-task-manager-cache-files-5';
 
 var filesCached = [
-    '/',
-    '/index.html',
-    '/create.html',
-    '/history.html',
-    '/homepage.html',
-    '/translation.fr.json',
-    '/css/app.css',
-    '/css/vendor.css',
-    '/js/app.js',
-    '/js/vendor.js',
-    '/img/icons/menu.svg',
-    '/img/icons/search.svg',
-    '/img/icons/create.svg',
-    '/img/icons/check.svg',
-    '/img/icons/next.svg',
-    '/img/icons/delete.svg',
-    '/img/icons/back.svg'
+    './',
+    './index.html',
+    './create.html',
+    './history.html',
+    './homepage.html',
+    './translation.fr.json',
+    './css/app.css',
+    './css/vendor.css',
+    './js/app.js',
+    './js/vendor.js',
+    './img/icons/menu.svg',
+    './img/icons/search.svg',
+    './img/icons/create.svg',
+    './img/icons/check.svg',
+    './img/icons/next.svg',
+    './img/icons/delete.svg',
+    './img/icons/back.svg'
 ];
 
 self.addEventListener('install', function(e) {

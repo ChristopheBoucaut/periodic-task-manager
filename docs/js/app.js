@@ -248,7 +248,7 @@ mainModule.config(['storageProvider', function (storageProvider) {
 mainModule.run(function () {
     // Register serviceWorker
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js').then(function () {
+        navigator.serviceWorker.register('./service-worker.js').then(function () {
             console.log('Service Worker Registered');
         });
     }
