@@ -14,4 +14,4 @@ To manage periodics tasks. More informations soon.
 
 # Build for prod
 
-* brunch build --production
+* node_modules/.bin/brunch build --production

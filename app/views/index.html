@@ -10,7 +10,7 @@
         <script type="text/javascript" src="js/vendor.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
     </head>
-    <body>
+    <body layout="column">
         <header ng-controller="HeaderController">
             <md-sidenav ng-if="isHome" md-component-id="left" class="md-sidenav-left">
                 <md-list>
@@ -46,10 +46,10 @@
                   </div>
             </md-toolbar>
         </header>
-        <main>
-            <md-content ng-view>
-            </md-content>
-        </main>
+        <md-content>
+            <main ng-view>
+            </main>
+        </md-content>
         <script>
             (function () {
                 require('scripts/app');
